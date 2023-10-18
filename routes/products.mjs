@@ -48,9 +48,9 @@ router.put("/:id", async (req, res) => {
   try {
     const collection = db.collection("Product");
     const query = { _id: new ObjectId(req.params.id) };
-    const updatedDocument = req.body;
+    const updateData = req.body; // The data to update
 
-    const result = await collection.replaceOne(query, updatedDocument);
+    const result = await collection.updateOne(query, { $set: updateData }); //I use the $set operator here so that i can specify the fields i want to update
 
     if (result.modifiedCount === 1) {
       res.status(200).send("Document updated successfully");
