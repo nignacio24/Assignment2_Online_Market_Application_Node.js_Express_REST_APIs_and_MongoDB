@@ -21,7 +21,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-
 // Get Product by ID
 router.get("/:id", async (req, res) => {
   let collection = await db.collection("Product");
@@ -31,14 +30,12 @@ router.get("/:id", async (req, res) => {
   
     if (!result) res.send("Not found").status(404);
     else res.send(result).status(200);
-
   }
   catch(e)
   {
     console.dir(e);
     res.status(500).send("An error occurred while getting the document");
   }
-
 });
 
 // Add new Product
@@ -52,9 +49,7 @@ router.post("/", async (req, res) => {
     console.error(e);
     res.status(500).send("An error occurred while adding a new document");
   }
-  
 });
-
 
 // Update Product by ID
 router.put("/:id", async (req, res) => {
@@ -88,7 +83,6 @@ router.delete("/:id", async (req, res) => {
     console.error(e);
     res.status(500).send("An error occurred while deleting document");
   }
-  
 });
 
 // Remove all products
